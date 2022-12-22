@@ -8,7 +8,7 @@ $flying-color: rgb(164, 244, 255);
 $ground-color: rgb(95, 48, 14);
 $rock-color: rgb(48, 48, 48);
 $bug-color: rgb(79, 109, 82);
-$ghost-color: rgb(243, 243, 243);
+$ghost-color: rgb(219, 57, 219);
 $steel-color: rgb(161, 161, 161);
 $water-color: rgb(21, 142, 255);
 $electric-color: #eed535;
@@ -182,7 +182,7 @@ $shadow-color: rgb(20, 16, 56);
     background: linear-gradient(130deg, rgba(79, 109, 82, 0.89) 0%, rgb(104, 70, 51) 100%);
   }
   &.ghost {
-    background: linear-gradient(130deg, rgba(243, 243, 243, 0.89) 0%, rgb(255, 184, 255) 100%);
+    background: linear-gradient(130deg, rgba(243, 243, 243, 0.89) 0%, rgb(219, 57, 219) 100%);
     color: black;
   }
   &.steel {

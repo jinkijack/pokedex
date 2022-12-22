@@ -27,19 +27,28 @@ export class AppComponent {
     )
       .catch((err) => console.log(err));
   }
-
-  findPokemon() {
-
-    this.service.find(this.pokemonName.toLowerCase().trim()).then((result: Pokemon) => {
-      console.log(result)
+  find(){
+  this.service.findPokemon(this.pokemonName.toLowerCase().trim()).subscribe({
+    next: (result:Pokemon) => {
       this.pokemon = result;
-      savePokemon(this.pokemon)
-      this.history = getHistory();
+      console.table(result as Pokemon)
+    }, error: (error) => {
+      console.log(error)
     }
-    )
-      .catch((err) => console.log(err));
-    console.log("Ok:" + this.pokemonName)
-  }
+  })
+}
+
+  // findPokemon() {
+  //   this.service.find(this.pokemonName.toLowerCase().trim()).then((result: Pokemon) => {
+  //     console.log(result)
+  //     this.pokemon = result;
+  //     savePokemon(this.pokemon)
+  //     this.history = getHistory();
+  //   }
+  //   )
+  //     .catch((err) => console.log(err));
+  //   console.log("Ok:" + this.pokemonName)
+  // }
 
   cleanHistory(){
     if( confirm("Tem certeza que deseja apagar o histórico?") ){

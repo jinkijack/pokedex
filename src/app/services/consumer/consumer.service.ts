@@ -25,4 +25,7 @@ export class ConsumerService {
     })
       .then((res) => res.json())
   }
+  findPokemon(param: string) {
+    return this.http.get(`${this.URL_API}${param}`) as Observable<Pokemon>;
+  }
 }
