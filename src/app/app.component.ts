@@ -20,7 +20,7 @@ export class AppComponent {
     init();
     this.history = getHistory();
     this.service = service;
-    this.service.find("arceus").then((result: Pokemon) => {
+    this.service.find("1").then((result: Pokemon) => {
       console.log(result)
       this.pokemon = result;
     }
@@ -29,11 +29,12 @@ export class AppComponent {
   }
 
   findPokemon() {
-    savePokemon(this.pokemon)
-    this.history = getHistory();
-    this.service.find(this.pokemonName.toLowerCase()).then((result: Pokemon) => {
+
+    this.service.find(this.pokemonName.toLowerCase().trim()).then((result: Pokemon) => {
       console.log(result)
       this.pokemon = result;
+      savePokemon(this.pokemon)
+      this.history = getHistory();
     }
     )
       .catch((err) => console.log(err));

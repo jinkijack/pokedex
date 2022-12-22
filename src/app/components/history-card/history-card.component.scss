@@ -1,4 +1,5 @@
 $primary-green: rgba(35, 109, 35, 0.801);
+$grass-color: #9bcc50;
 $primary-purple: #5e0f5e;
 $fire-color: rgb(240, 128, 48);
 $normal-color: rgb(104, 104, 104);
@@ -10,7 +11,7 @@ $bug-color: rgb(79, 109, 82);
 $ghost-color: rgb(243, 243, 243);
 $steel-color: rgb(161, 161, 161);
 $water-color: rgb(21, 142, 255);
-$electric-color: rgb(255, 225, 55);
+$electric-color: #eed535;
 $psychic-color: rgb(158, 103, 77);
 $ice-color: rgb(73, 255, 231);
 $dragon-color: rgb(160, 52, 52);
@@ -20,7 +21,7 @@ $unknown-color: rgb(255, 213, 213);
 $shadow-color: rgb(20, 16, 56);
 
 .card-history-container {
-  height: 200px;
+  height: 150px;
   position: relative;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -29,11 +30,11 @@ $shadow-color: rgb(20, 16, 56);
   overflow: hidden;
 
   .image-container {
-    z-index: 20;
-    height: 200px;
+    z-index: 10;
+    height: 150px;
     img{
       height: 100%;
-      transform: translateX(-30px);
+      transform: translateX(-5px);
     }
   }
 
@@ -49,6 +50,7 @@ $shadow-color: rgb(20, 16, 56);
 
   &.poison {
     background: $primary-purple;
+    color: white;
   }
 
   &.grass {
@@ -56,6 +58,7 @@ $shadow-color: rgb(20, 16, 56);
   }
   &.fire {
     background: $fire-color;
+    color: black;
   }
   &.normal {
     background: $normal-color;
@@ -65,6 +68,7 @@ $shadow-color: rgb(20, 16, 56);
   }
   &.flying {
     background: $flying-color;
+    color: black;
   }
   &.ground {
     background: $ground-color;
@@ -86,6 +90,7 @@ $shadow-color: rgb(20, 16, 56);
   }
   &.electric {
     background: $electric-color;
+    color: black;
   }
   &.psychic {
     background: $psychic-color;
@@ -98,6 +103,7 @@ $shadow-color: rgb(20, 16, 56);
   }
   &.dark {
     background: $dark-color;
+    color: white;
   }
   &.fairy {
     background: $fairy-color;
