@@ -38,7 +38,7 @@ export class CardComponent {
     }
   }
 
-  getHeight() {
+  get height() {
     if (this.pokemon.height) {
       console.log(this.pokemon.sprites?.other?.official_artwork?.front_default)
       return this.pokemon.height / 10;
@@ -46,7 +46,7 @@ export class CardComponent {
       return '';
     }
   }
-  getWeight() {
+  get weight() {
     if (this.pokemon.weight) {
       return this.pokemon.weight / 10;
     } else {
@@ -54,7 +54,7 @@ export class CardComponent {
     }
   }
 
-  getName(){
+  get name(){
     if(this.pokemon.name){
       return this.pokemon.name;
     }else{
