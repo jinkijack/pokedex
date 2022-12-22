@@ -1,2 +1,2 @@
-https://ifpb.github.io/css-exercises/challenges/css/pokedex/
+https://jinkijack-pokedex.vercel.app/
 https://pokeapi.co/
