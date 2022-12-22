@@ -1,0 +1,10 @@
+<div class="card-history-container {{this.pokemon.types[0].type.name}}">
+    <div class="image-container">
+        <img  [src]="this.getSprite()"
+        [alt]="this.pokemon.name">
+    </div>
+    <div class="data ">
+        <h4>{{this.pokemon.name}}</h4>
+        <p>#{{this.pokemon.id}}</p>
+    </div>
+</div>

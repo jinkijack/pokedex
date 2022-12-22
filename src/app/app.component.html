@@ -1,0 +1,35 @@
+<main>
+  <header>
+    <h1>Pokédex</h1>
+  </header>
+
+  <section class="search-bar">
+    <input type="text" name="" id ="" [(ngModel)]="pokemonName">
+    <button class="search-btn" (click)="findPokemon()">
+    </button>
+  </section>
+
+  <section id="content">
+    <div id="app">
+      <app-card [pokemon]="this.pokemon" [type]="this.pokemon.types[0].type.name"></app-card>
+    </div>
+  </section>
+
+  <section class="history">
+    <h2>Histórico de busca</h2>
+
+    <div class="history-wrapper">
+      <app-history-card *ngFor="let poke of this.history" [pokemon]="poke"></app-history-card>
+    </div>
+
+    
+  </section>
+  <section class="options-section">
+    <div class="options">
+      <h4>Ferramentas</h4>
+      <div>
+        <button (click)="cleanHistory()">Limpar Histórico</button>
+      </div>
+    </div>
+  </section>
+</main>
