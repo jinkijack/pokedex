@@ -15,6 +15,13 @@
     </div>
   </section>
 
+  <section>
+    <div>
+      <button class="fav like-button" (click)= "saveFav(this.pokemon)">
+      </button>
+    </div>
+  </section>
+
   <section class="history">
     <h2>Histórico de busca</h2>
 
@@ -31,4 +38,14 @@
       </div>
     </div>
   </section>
+
+  <section>
+    <div class="favorites">
+      <h2>Favoritos</h2>
+      <div class="favorites-wrapper">
+        <app-fav-card *ngFor="let poke of this.fav" [pokemon]="poke"></app-fav-card>
+      </div>
+    </div>
+  </section>
+
 </main>

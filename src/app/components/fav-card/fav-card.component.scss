@@ -20,7 +20,7 @@ $fairy-color: rgb(103, 189, 146);
 $unknown-color: rgb(255, 213, 213);
 $shadow-color: rgb(20, 16, 56);
 
-.card-fav-container {
+.card-history-container {
   height: 150px;
   position: relative;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.3);
@@ -52,7 +52,6 @@ $shadow-color: rgb(20, 16, 56);
     background: $primary-purple;
     color: white;
   }
-
   &.grass {
     background: $primary-green;
   }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Pokemon } from './domains/Pokemon';
 import { ConsumerService } from './services/consumer/consumer.service';
 import { cleanStorage, getHistory, init, savePokemon } from './services/storage/storage.service';
+import { savePokemon as saveFav, init as initFav, getFav, removeFavorite, cleanFavorite } from './services/fav/favorito.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +14,14 @@ export class AppComponent {
 
   pokemonName: string = "";
   history: Pokemon[] = [];
+  fav: Pokemon[] = [];
 
   public pokemon: Pokemon = new Pokemon;
 
   constructor(private service: ConsumerService) {
     init();
+    initFav();
+    this.fav = getFav();
     this.history = getHistory();
     this.service = service;
     this.service.find("1").then((result: Pokemon) => {
@@ -39,6 +43,10 @@ export class AppComponent {
     }
   })
 }
+saveFav(pokemon: Pokemon){
+  saveFav(pokemon);
+  this.fav = getFav();
+}
 
   // findPokemon() {
   //   this.service.find(this.pokemonName.toLowerCase().trim()).then((result: Pokemon) => {
@@ -58,4 +66,8 @@ export class AppComponent {
       this.history = getHistory();
     }
   }
+
+
+
+
 }

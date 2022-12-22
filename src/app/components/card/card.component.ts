@@ -15,7 +15,7 @@ export class CardComponent {
 @Input() pokemon: Pokemon = new Pokemon;
 @Input() type: any;
 
-  constructor() { 
+  constructor() {
   }
 
   getSprite() {
@@ -61,4 +61,5 @@ export class CardComponent {
       return '';
     }
   }
+
 }

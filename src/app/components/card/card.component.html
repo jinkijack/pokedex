@@ -1,6 +1,7 @@
 <div class="card type-background {{this.type}}">
   <div>
     <span class="card--id">#{{this.pokemon.id}}</span>
+    <app-fav-btn [pokemon]="this.pokemon"></app-fav-btn>
     <div>
       <span *ngFor="let type of this.pokemon.types" class="type--badge {{type.type.name}}">{{type.type.name | uppercase}}</span>
     </div>
