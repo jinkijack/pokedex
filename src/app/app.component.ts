@@ -51,7 +51,7 @@ export class AppComponent {
   //     .catch((err) => console.log(err));
   //   console.log("Ok:" + this.pokemonName)
   // }
-
+//aaaa
   cleanHistory(){
     if( confirm("Tem certeza que deseja apagar o histórico?") ){
       cleanStorage();
@@ -59,3 +59,6 @@ export class AppComponent {
     }
   }
 }
+
+
+
