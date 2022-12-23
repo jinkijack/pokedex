@@ -1,33 +1,35 @@
+ 
 header {
-  display: flex;
-  height: clamp(20vh, 30%, 45vh);
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-  margin-bottom: 1%;
-}
-
-header > h1 {
-  font-size: clamp(2rem, 10vw, 5rem);
-  color: rgb(255, 255, 255);
-  text-transform: capitalize;
-  position: relative;
-}
-#content {
-  padding: 1rem;
-  max-width: 1100px;
-  margin: auto;
-}
-
-#app {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  grid-gap: 1.5rem;
-  justify-content: center;
-  align-items: center;
-}
-
-* {
+    display: flex;
+    height: clamp(20vh, 30%, 45vh);
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: 1%;
+  }
+  
+  
+  header > h1 {
+    font-size: clamp(2rem, 10vw, 5rem);
+    color: rgb(255, 255, 255);
+    text-transform: capitalize;
+    position: relative;
+  }
+  #content {
+    padding: 3rem;
+    max-width: 1100px;
+    margin: auto;
+  }
+  
+  #app {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  * {
 	border: 0;
 	box-sizing: border-box;
 	margin: 0;
@@ -50,6 +52,14 @@ body {
 	background: #f1f1f1;
 	height: 100vh;
 }
+
+main {
+  line-height: 1.5;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
 .search-bar input,
 .search-btn, 
 .search-btn:before, 
@@ -60,25 +70,20 @@ body {
 .search-btn {
 	width: 3em;
 	height: 3em;
-}
-.search-bar input:invalid:not(:focus),
-.search-btn {
 	cursor: pointer;
 }
-.search-bar,
-.search-bar input:focus,
+
 .search-bar input:valid  {
 	width: 100%;
 }
-.search-bar input:focus,
-.search-bar input:not(:focus) + .search-btn:focus {
-	outline: transparent;
-}
+
 .search-bar {
 	margin: auto;
 	padding: 1.5em;
 	justify-content: center;
+	max-height: 3rem;
 	max-width: 30em;
+	height: 3rem;
 }
 .search-bar input {
 	background: transparent;
@@ -91,9 +96,7 @@ body {
 	-moz-appearance: none;
 	appearance: none;
 }
-.search-bar input::-webkit-search-decoration {
-	-webkit-appearance: none;
-}
+
 .search-bar input:focus,
 .search-bar input:valid {
 	background: #fff;
@@ -184,59 +187,69 @@ body {
 	}
 }
 
-main {
-  line-height: 1.5;
-  height: 100vh;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-.history {
-  h2 {
-    margin: 80px auto 20px;
-    text-align: center;
-    color: white;
+  .favoritos {
+	h2 {
+	  margin: 1rem auto 1rem;
+	  text-align: center;
+	  color: white;
+	}
+	.favoritos-wrapper {
+	  width: 80%;
+	  margin: 0 auto;
+	  display: grid;
+	  grid-template-columns: repeat(5, minmax(300px, 1fr));
+	  grid-gap: 15px;
+	}
   }
-  .history-wrapper {
-    width: 60%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 15px;
+  
+  .history {
+	h2 {
+	  margin: 1rem auto 1rem;
+	  text-align: center;
+	  color: white;
+	}
+	.history-wrapper {
+	  width: 60%;
+	  margin: 0 auto;
+	  display: grid;
+	  grid-template-columns: repeat(3, minmax(300px, 1fr));
+	  grid-gap: 15px;
+	}
   }
-}
-.options-section {
-  padding-bottom: 100px;
-  .options {
-    width: 50%;
-    margin: 30px auto;
-    border-radius: 10px;
-    height: 180px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    h4 {
-      text-align: center;
-      color: white;
-    }
-    div {
+  
+  .options-section {
+    padding-bottom: 100px;
+    .options {
+      width: 50%;
+      margin: 30px auto;
+      border-radius: 10px;
+      height: 180px;
       display: flex;
-      flex-direction: row;
-      color: white;
-      justify-content: space-evenly;
-      button {
-        background-color: #2762f3;
-        height: 20px;
-        padding: 15px;
-        font-size: 15px;
-        border-radius: 10px;
-        border: none;
-        height: 100%;
-        &:hover {
-          background-color:#0c48db;
-          cursor: pointer;
+      justify-content: center;
+      flex-direction: column;
+      h4 {
+        text-align: center;
+        color: white;
+      }
+      div {
+        display: flex;
+        flex-direction: row;
+        color: white;
+        justify-content: space-evenly;
+        button {
+          background-color: #2762f3;
+          height: 20px;
+          padding: 15px;
+          font-size: 15px;
+          border-radius: 10px;
+          border: none;
+          height: 100%;
+          &:hover {
+            background-color:#0c48db;
+            cursor: pointer;
+          }
         }
       }
     }
   }
-}
+

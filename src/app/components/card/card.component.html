@@ -1,8 +1,13 @@
-<div class="card type-background {{this.type}}">
-  <div>
-    <span class="card--id">#{{this.pokemon.id}}</span>
+<div class="card type-background {{this.type}}"Z>
+  
+  <div class="card-header">
+    <div class="card--id">#{{this.pokemon.id}}</div>
     <div>
-      <span *ngFor="let type of this.pokemon.types" class="type--badge {{type.type.name}}">{{type.type.name | uppercase}}</span>
+      <span *ngFor="let type of this.pokemon.types" class="type--badge card-color {{type.type.name}}">{{type.type.name | uppercase}}</span>
+    </div>
+    <div class="favorite-icon" >
+      <!-- <i class='bx bx-star'  ></i> -->
+      <i class='bx bxs-star' (click)="add()"></i>
     </div>
   </div>
 
@@ -10,15 +15,14 @@
   <img class="card--image"
   [src]="this.getArt()"
     [alt]="this.pokemon.name" />
-  <h1 class="card--name">{{this.name}}</h1>
+  <h1 class="card--name">{{this.name | titlecase}}</h1>
 
   <div class="card--details">
     <span>
       <strong>Altura:</strong> {{this.height}}m
     </span>
     <span>
-      <p></p>
-      <strong>Peso:</strong> {{this.weight}}kg 
+      <strong>Peso:</strong> {{this.weight}}kg
     </span>
   </div>
 

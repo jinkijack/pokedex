@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './components/card/card.component';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HistoryCardComponent } from './components/history-card/history-card.component';
 
 
@@ -24,7 +24,7 @@ const components:any = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

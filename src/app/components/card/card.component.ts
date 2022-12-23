@@ -1,21 +1,24 @@
 import { Pokemon, Type, Other, OfficialArtwork } from './../../domains/Pokemon';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output  } from '@angular/core';
 
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss',
+              '../../../styles.scss']
 })
+
 
 
 export class CardComponent {
 //  pokemon:Pokemon = new Pokemon();
 
-@Input() pokemon: Pokemon = new Pokemon;
-@Input() type: any;
+  @Input() pokemon: Pokemon = new Pokemon;
+  @Input() type: any;
+  @Output() addToFavorites = new EventEmitter<Pokemon>();
 
-  constructor() { 
+  constructor() {
   }
 
   getSprite() {
@@ -61,4 +64,9 @@ export class CardComponent {
       return '';
     }
   }
+
+  add(){
+    this.addToFavorites.emit(this.pokemon)
+  }
+
 }

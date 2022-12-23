@@ -1,5 +1,5 @@
 import { Pokemon } from './../../domains/Pokemon';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-history-card',
@@ -9,30 +9,29 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HistoryCardComponent implements OnInit {
 
   @Input() pokemon: Pokemon = new Pokemon;
+  @Input() isFavorite = false;
+  @Output() removeFromFavorites = new EventEmitter<Pokemon>();
+  @Output() viewPokemon = new EventEmitter<Pokemon>();
   
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getArt(){
-    if(this.pokemon.sprites?.other?.official_artwork?.front_default == undefined){
-      if (this.pokemon.sprites?.other?.dream_world?.front_default == undefined) {
-        return this.getSprite();
-      }
-        else{
-          return this.pokemon.sprites?.other?.dream_world?.front_default;
-        }
-    } else {
-      return this.pokemon.sprites?.other?.official_artwork?.front_default;
-    }
-  }
   getSprite() {
     if (this.pokemon.sprites?.front_default == undefined) {
       return '';
     } else {
       return this.pokemon.sprites?.front_default;
     }
+  }
+
+  remove(){
+    this.removeFromFavorites.emit(this.pokemon)
+  }
+
+  view(){
+    this.viewPokemon.emit(this.pokemon)
   }
 
 }
