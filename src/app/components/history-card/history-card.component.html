@@ -1,10 +1,19 @@
-<div class="card-fav-container  {{this.pokemon.types[0].type.name}}">
+<div class="card-history-container card-color {{this.pokemon.types[0].type.name}}"
+(click)="view()"
+>
+
     <div class="image-container">
         <img  [src]="this.getSprite()"
         [alt]="this.pokemon.name">
     </div>
     <div class="data ">
-        <h4>{{this.pokemon.name | titlecase}}</h4>
+        <div class="remove-from-favorites-container"
+        *ngIf="this.isFavorite"
+        (click)="remove()"
+        >
+          <i class='bx bxs-star'></i>
+        </div>
         <p>#{{this.pokemon.id}}</p>
+        <h4>{{this.pokemon.name | titlecase}}</h4>
     </div>
 </div>

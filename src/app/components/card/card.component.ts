@@ -1,5 +1,5 @@
 import { Pokemon, Type, Other, OfficialArtwork } from './../../domains/Pokemon';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output  } from '@angular/core';
 
 
 @Component({
@@ -12,8 +12,9 @@ import { Component, Input } from '@angular/core';
 export class CardComponent {
 //  pokemon:Pokemon = new Pokemon();
 
-@Input() pokemon: Pokemon = new Pokemon;
-@Input() type: any;
+  @Input() pokemon: Pokemon = new Pokemon;
+  @Input() type: any;
+  @Output() addToFavorites = new EventEmitter<Pokemon>();
 
   constructor() {
   }
@@ -60,6 +61,10 @@ export class CardComponent {
     }else{
       return '';
     }
+  }
+
+  add(){
+    this.addToFavorites.emit(this.pokemon)
   }
 
 }
