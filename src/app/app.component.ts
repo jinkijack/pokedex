@@ -28,9 +28,11 @@ export class AppComponent {
       .catch((err) => console.log(err));
   }
   find(){
-  this.service.findPokemon(this.pokemonName.toLowerCase().trim()).subscribe({
+  this.service.findPokemon(this.pokemonName.toLowerCase().trim().replace("#","")).subscribe({
     next: (result:Pokemon) => {
       this.pokemon = result;
+      savePokemon(this.pokemon)
+      this.history = getHistory();
       console.table(result as Pokemon)
     }, error: (error) => {
       console.log(error)
@@ -49,7 +51,7 @@ export class AppComponent {
   //     .catch((err) => console.log(err));
   //   console.log("Ok:" + this.pokemonName)
   // }
-
+//aaaa
   cleanHistory(){
     if( confirm("Tem certeza que deseja apagar o histórico?") ){
       cleanStorage();
@@ -57,3 +59,6 @@ export class AppComponent {
     }
   }
 }
+
+
+
