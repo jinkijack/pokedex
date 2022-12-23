@@ -61,6 +61,8 @@ addToFavorites(poke: Pokemon) {
   if (this.fav.length < 10) {
     this.fav.push(poke);
     saveFavorites(this.fav);
+  }else{
+    alert("Você já atingiu o limite de favoritos!")
   }
 }
 
@@ -76,10 +78,15 @@ viewPokemon(poke: Pokemon){
 }
 
 cleanHistory() {
+  if(this.history.length > 0){
+
   if (confirm("Tem certeza que deseja apagar o histórico?")) {
     cleanStorage();
     this.history = getHistory();
   }
+}else{
+  alert("O histórico está vazio!")
+}
 }
 
 
