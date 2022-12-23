@@ -33,14 +33,12 @@ export class AppComponent {
   find(){
   this.service.findPokemon(this.pokemonName.toLowerCase().trim().replace("#","")).subscribe({
     next: (result:Pokemon) => {
-      if(result == null){
-        alert("Pokemon não encontrado!");
-      }
       this.pokemon = result;
       this.addToHistory(this.pokemon)
       this.history = getHistory();
       console.table(result as Pokemon)
     }, error: (error) => {
+      alert("Pokemon não encontrado!");
       console.log(error)
     }
   })
@@ -82,15 +80,12 @@ viewPokemon(poke: Pokemon){
 
 cleanHistory() {
   if(this.history.length > 0){
-
-  if (confirm("Tem certeza que deseja apagar o histórico?")) {
-    cleanStorage();
-    this.history = getHistory();
+    if (confirm("Tem certeza que deseja apagar o histórico?")) {
+      cleanStorage();
+      this.history = getHistory();
+    }
+  }else{
+    alert("O histórico já está vazio!")
   }
-}else{
-  alert("O histórico está vazio!")
 }
-}
-
-
 }

@@ -29,5 +29,4 @@ export class ConsumerService {
   findPokemon(param: string): Observable<Pokemon>{
     return this.http.get(`${this.URL_API}${param}`) as Observable<Pokemon>;
   }
-
 }
