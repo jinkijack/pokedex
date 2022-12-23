@@ -70,20 +70,13 @@ main {
 .search-btn {
 	width: 3em;
 	height: 3em;
-}
-.search-bar input:invalid:not(:focus),
-.search-btn {
 	cursor: pointer;
 }
-.search-bar,
-.search-bar input:focus,
+
 .search-bar input:valid  {
 	width: 100%;
 }
-.search-bar input:focus,
-.search-bar input:not(:focus) + .search-btn:focus {
-	outline: transparent;
-}
+
 .search-bar {
 	margin: auto;
 	padding: 1.5em;
@@ -103,9 +96,7 @@ main {
 	-moz-appearance: none;
 	appearance: none;
 }
-.search-bar input::-webkit-search-decoration {
-	-webkit-appearance: none;
-}
+
 .search-bar input:focus,
 .search-bar input:valid {
 	background: #fff;
