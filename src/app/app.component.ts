@@ -33,6 +33,9 @@ export class AppComponent {
   find(){
   this.service.findPokemon(this.pokemonName.toLowerCase().trim().replace("#","")).subscribe({
     next: (result:Pokemon) => {
+      if(result == null){
+        alert("Pokemon não encontrado!");
+      }
       this.pokemon = result;
       this.addToHistory(this.pokemon)
       this.history = getHistory();
