@@ -1,6 +1,5 @@
 <div class="card-history-container card-color {{this.pokemon.types[0].type.name}}"
-(click)="view()"
->
+(click)="view()">
 
     <div class="image-container">
         <img  [src]="this.getSprite()"
@@ -13,7 +12,11 @@
         >
           <i class='bx bxs-star'></i>
         </div>
-        <p>#{{this.pokemon.id}}</p>
-        <h4>{{this.pokemon.name | titlecase}}</h4>
+        <p>
+            <strong>#{{this.pokemon.id}}</strong>
+            </p>
+        <h4>
+            <strong>{{this.pokemon.name | titlecase}}</strong>
+        </h4>
     </div>
 </div>

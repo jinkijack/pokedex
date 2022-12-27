@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Pokemon } from './domains/Pokemon';
 import { ConsumerService } from './services/consumer/consumer.service';
-import { cleanStorage, getFavorites, getHistory, init, saveFavorites, savePokemon } from './services/storage/storage.service';
+import { cleanFavorites, cleanStorage, getFavorites, getHistory, init, saveFavorites, savePokemon } from './services/storage/storage.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,7 +19,17 @@ export class AppComponent {
 
   public pokemon: Pokemon = new Pokemon;
 
-  constructor(private service: ConsumerService) {
+  public checkoutForm:FormGroup<any> = this.formBuilder.group({
+    name: [
+      '',[
+        Validators.required,
+        Validators.maxLength(10),
+      ]
+    ],
+  });
+
+  constructor(private service: ConsumerService, private formBuilder: FormBuilder,) {
+
     init();
     this.history = getHistory();
     this.fav = getFavorites();
@@ -30,7 +41,21 @@ export class AppComponent {
     )
       .catch((err) => console.log(err));
   }
-  find(){
+
+  onSubmit():void {
+    this.service.findPokemon(this.checkoutForm.value.name.toLowerCase().trim().replace("#","")).subscribe({
+      next: (result:Pokemon) => {
+        this.pokemon = result;
+        this.addToHistory(this.pokemon)
+        this.history = getHistory();
+        console.table(result as Pokemon)
+      }, error: (error) => {
+        alert("Pokemon não encontrado!");
+        console.log(error)
+      }
+    })
+  }
+  find():void {
   this.service.findPokemon(this.pokemonName.toLowerCase().trim().replace("#","")).subscribe({
     next: (result:Pokemon) => {
       this.pokemon = result;
@@ -43,7 +68,7 @@ export class AppComponent {
     }
   })
 }
-addToHistory(poke: Pokemon) {
+addToHistory(poke: Pokemon):void {
   for (let p of this.history) {
     if (p.id == poke.id) {
       return;
@@ -52,7 +77,7 @@ addToHistory(poke: Pokemon) {
   this.history.push(poke);
   savePokemon(poke);
 }
-addToFavorites(poke: Pokemon) {
+addToFavorites(poke: Pokemon):void {
   console.log("Adicionado aos favoritos: " + poke.name)
   for (let p of this.fav) {
     if (p.id == poke.id) {
@@ -67,18 +92,18 @@ addToFavorites(poke: Pokemon) {
   }
 }
 
-removeFromFavorites(poke: Pokemon) {
+removeFromFavorites(poke: Pokemon):void {
   console.log("removido dos favoritos: " + poke.name)
   this.fav = this.fav.filter((p) => p.id != poke.id)
   saveFavorites(this.fav);
 
 }
 
-viewPokemon(poke: Pokemon){
+viewPokemon(poke: Pokemon):void {
   this.pokemon = poke;
 }
 
-cleanHistory() {
+cleanHistory():void {
   if(this.history.length > 0){
     if (confirm("Tem certeza que deseja apagar o histórico?")) {
       cleanStorage();
@@ -88,4 +113,27 @@ cleanHistory() {
     alert("O histórico já está vazio!")
   }
 }
+cleanFavorites():void {
+  if(this.fav.length > 0){
+    if (confirm("Tem certeza que deseja apagar os favoritos?")) {
+      cleanFavorites();
+      this.fav = getFavorites();
+    }
+  }else{
+    alert("Você não tem favoritos!")
+  }
+}
+
+handleSubmit(e:any){
+  e.preventDefault();
+  this.find();
+}
+
+handleKeyUp(e:any){
+   if(e.keyCode === 13){
+      this.handleSubmit(e);
+   }
+}
+
+
 }

@@ -1,14 +1,16 @@
+
 <main>
   <header>
-    <h1>Pokedex</h1>
+    <h1>Pokédex</h1>
   </header>
-
+  
+<form [formGroup] = "checkoutForm" (ngSubmit)="onSubmit()">
   <section class="search-bar">
-    <input type="text" name="" id ="" [(ngModel)]="pokemonName">
-    <button class="search-btn" (click)="find()">
-    </button>
+    <input type="text" id ="name" formControlName="name">
+    <button class="search-btn" type="submit"></button>
   </section>
-
+</form>
+  
   <section id="content">
       <app-card 
       [pokemon]="this.pokemon" 
@@ -27,6 +29,13 @@
       (removeFromFavorites)="removeFromFavorites($event)"
       (viewPokemon)="viewPokemon($event)"
       ></app-history-card>
+    </div>
+  </section>
+  <section class="options-section">
+    <div class="options">
+      <div>
+        <button (click)="cleanFavorites()">Limpar os Favoritos</button>
+      </div>
     </div>
   </section>
 
