@@ -12,7 +12,6 @@ import { Component, EventEmitter, Input, Output  } from '@angular/core';
 
 
 export class CardComponent {
-//  pokemon:Pokemon = new Pokemon();
 
   @Input() pokemon: Pokemon = new Pokemon;
   @Input() type: any;
@@ -20,7 +19,7 @@ export class CardComponent {
 
   constructor() {
   }
-
+  
   getSprite() {
     if (this.pokemon.sprites?.front_default == undefined) {
       return '';
@@ -43,7 +42,6 @@ export class CardComponent {
 
   get height() {
     if (this.pokemon.height) {
-      console.log(this.pokemon.sprites?.other?.official_artwork?.front_default)
       return this.pokemon.height / 10;
     } else {
       return '';

@@ -1,12 +1,12 @@
 
-<main>
+<main  class="{{this.cursor}}">
   <header>
     <h1>Pokédex</h1>
   </header>
   
 <form [formGroup] = "checkoutForm" (ngSubmit)="onSubmit()">
   <section class="search-bar">
-    <input type="text" id ="name" formControlName="name">
+    <input type="search" id ="name" formControlName="name">
     <button class="search-btn" type="submit"></button>
   </section>
 </form>

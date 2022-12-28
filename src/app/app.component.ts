@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from './domains/Pokemon';
 import { ConsumerService } from './services/consumer/consumer.service';
 import { cleanFavorites, cleanStorage, getFavorites, getHistory, init, saveFavorites, savePokemon } from './services/storage/storage.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule  } from '@angular/forms';
+
 
 
 @Component({
@@ -10,50 +12,80 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'pokedex';
 
-  pokemonName: string = "";
+  // pokemonName: string = "";
   history: Pokemon[] = [];
   fav: Pokemon[] = [];
-  encode = new RegExp("^[a-zA-Z0-9]*\\.?[a-zA-Z0-9]*$", "g")
-  teste = "pikachu";
-  test2 = "%" + this.teste;
+  encode = new RegExp("^[a-z0-9]*\\.?[a-z0-9]*$", "g")
+  regex: RegExp = /^[a-z0-9]*\.?[a-z0-9]*$/g
+  cursor: string = "cursor-default";
+  teste1 = "."
+  teste2 = "#"
+  teste3= "";
   public pokemon: Pokemon = new Pokemon;
 
   public checkoutForm:FormGroup<any> = this.formBuilder.group({
-    name: [
-      '',[
-        Validators.required,
-        Validators.maxLength(10),
-      ]
-    ],
+    name: '',
   });
 
   constructor(private service: ConsumerService, private formBuilder: FormBuilder,) {
-    console.log(this.encode.test(this.test2));
-    console.log(this.encode.test(this.teste));
-
     init();
+    console.log(this.regex.test(this.teste3))
     this.history = getHistory();
     this.fav = getFavorites();
     this.service = service;
     this.service.find("1").then((result: Pokemon) => {
-      console.log(result)
-      this.pokemon = result;
-    }
+    console.log(result)
+    this.pokemon = result;
+    this.cursor = "cursor-default";
+  }
     )
       .catch((err) => console.log(err));
+    
+  }
+  ngOnInit():void {
+    this.cursor = "cursor-default";
+    this.history = getHistory();
+    this.fav = getFavorites();
+    
+  }
+  onSubmit():void {
+    console.log(this.cursor)
+    this.cursor = "cursor-loading";
+    var pokemonName = this.checkoutForm.value.name;
+    var bol = false;
+    this.checkoutForm.reset();
+    pokemonName = pokemonName.toLowerCase().replace(".","").trim();
+    console.log("inicio")
+    
+    
+    if(pokemonName == "") {
+      alert("O nome do pokemon deve conter apenas letras e números!")
+      return;
+    }
+    if(pokemonName == " ") {
+      alert("O nome do pokemon deve conter apenas letras e números!")
+      return;
+    }
+
+    console.log(this.encode.test(pokemonName))
+    console.log("Negado " + !this.encode.test(pokemonName))
+    console.log(pokemonName)
+
+    if(!pokemonName.match(this.encode)) {
+      console.log("entrou encode")
+      alert("O nome do pokemon deve conter apenas letras e números!")
+      return;
+    }
+
+    this.find(pokemonName);
+    this.cursor = "cursor-default";
   }
 
-  onSubmit():void {
-    this.pokemonName = this.checkoutForm.value.name;
-    this.find();
-  }
-  find():void {
-    this.pokemonName = this.pokemonName.toLowerCase().trim().replace("#","");
-    if(this.encode.test(this.pokemonName)) {
-      this.service.findPokemon(this.pokemonName).subscribe({
+  find(name:string):void {
+      this.service.findPokemon(name).subscribe({
         next: (result:Pokemon) => {
           this.pokemon = result;
           this.addToHistory(this.pokemon)
@@ -64,10 +96,7 @@ export class AppComponent {
           console.log(error)
         }
       })
-    }else{
-      alert("O nome do pokemon deve conter apenas letras e números!")
-    }
-}
+  }
 addToHistory(poke: Pokemon):void {
   for (let p of this.history) {
     if (p.id == poke.id) {
@@ -123,17 +152,5 @@ cleanFavorites():void {
     alert("Você não tem favoritos!")
   }
 }
-
-handleSubmit(e:any){
-  e.preventDefault();
-  this.find();
-}
-
-handleKeyUp(e:any){
-   if(e.keyCode === 13){
-      this.handleSubmit(e);
-   }
-}
-
 
 }
