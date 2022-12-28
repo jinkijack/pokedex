@@ -54,19 +54,27 @@ export class AppComponent implements OnInit{
   onSubmit():void {
     console.log(this.cursor)
     this.cursor = "cursor-loading";
+    console.log(this.cursor)
     var pokemonName = this.checkoutForm.value.name;
     var bol = false;
     this.checkoutForm.reset();
     pokemonName = pokemonName.toLowerCase().replace(".","").trim();
     console.log("inicio")
     
+    if(pokemonName == null) {
+      alert("O nome do pokemon deve conter apenas letras e números!")
+      this.cursor = "cursor-default";
+      return;
+    }
     
     if(pokemonName == "") {
       alert("O nome do pokemon deve conter apenas letras e números!")
+      this.cursor = "cursor-default";
       return;
     }
     if(pokemonName == " ") {
       alert("O nome do pokemon deve conter apenas letras e números!")
+      this.cursor = "cursor-default";
       return;
     }
 

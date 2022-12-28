@@ -10,7 +10,9 @@ h4{
   display: grid;
   grid-template-columns: 3fr 2fr;
   overflow: hidden;
-  cursor: pointer;
+  &hover{
+    cursor: pointer;
+  }
 
   .image-container {
     z-index: 20;
