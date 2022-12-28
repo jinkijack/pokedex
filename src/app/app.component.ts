@@ -16,8 +16,9 @@ export class AppComponent {
   pokemonName: string = "";
   history: Pokemon[] = [];
   fav: Pokemon[] = [];
-  encode: RegExp = /^[^a-z][0-9]+$/
-
+  encode = new RegExp("^[a-zA-Z0-9]*\\.?[a-zA-Z0-9]*$", "g")
+  teste = "pikachu";
+  test2 = "%" + this.teste;
   public pokemon: Pokemon = new Pokemon;
 
   public checkoutForm:FormGroup<any> = this.formBuilder.group({
@@ -30,6 +31,8 @@ export class AppComponent {
   });
 
   constructor(private service: ConsumerService, private formBuilder: FormBuilder,) {
+    console.log(this.encode.test(this.test2));
+    console.log(this.encode.test(this.teste));
 
     init();
     this.history = getHistory();
@@ -48,22 +51,22 @@ export class AppComponent {
     this.find();
   }
   find():void {
+    this.pokemonName = this.pokemonName.toLowerCase().trim().replace("#","");
     if(this.encode.test(this.pokemonName)) {
-    this.service.findPokemon(this.pokemonName.toLowerCase().trim().replace("#","")).subscribe({
-    next: (result:Pokemon) => {
-      this.pokemon = result;
-      this.addToHistory(this.pokemon)
-      this.history = getHistory();
-      console.table(result as Pokemon)
-    }, error: (error) => {
-      alert("Pokemon não encontrado!");
-      console.log(error)
+      this.service.findPokemon(this.pokemonName).subscribe({
+        next: (result:Pokemon) => {
+          this.pokemon = result;
+          this.addToHistory(this.pokemon)
+          this.history = getHistory();
+          console.table(result as Pokemon)
+        }, error: (error) => {
+          alert("Pokemon não encontrado!");
+          console.log(error)
+        }
+      })
+    }else{
+      alert("O nome do pokemon deve conter apenas letras e números!")
     }
-  })
-  }else{
-    alert("O nome do pokemon deve conter apenas letras e números!")
-  }
-
 }
 addToHistory(poke: Pokemon):void {
   for (let p of this.history) {
