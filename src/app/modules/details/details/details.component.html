@@ -1,0 +1,60 @@
+<header>
+    <h1 [routerLink]="['/']">Pokédex</h1>
+</header>
+
+<div class="card type-background {{this.pokemon.types[0].type.name}}">
+  
+    <div class="card-header">
+      <div class="card--id">#{{this.pokemon.id}}</div>
+      <div>
+        <span *ngFor="let type of this.pokemon.types" class="type--badge card-color {{type.type.name}}">{{type.type.name | uppercase}}</span>
+      </div>
+      </div>
+
+    <div>
+        <p>
+            <strong> {{this.description}}</strong>
+        </p>
+    </div>
+    <img class="card--image"
+    [src]="this.getArt()"
+      [alt]="this.pokemon.name" />
+
+    <h1 class="card--name">{{this.name | titlecase}}</h1>
+
+    
+
+    <div>
+        <h2>Habilidades</h2>
+        <div class="card-abilities">
+            <span *ngFor="let ability of this.pokemon.abilities" class="type--badge card-color {{this.pokemon.types[0].type.name}}">
+            {{ability.ability.name | uppercase}}
+            </span>
+        </div>
+    </div>
+
+    <div class="status-container">
+      <h3>Status</h3>
+      <div class="chip-wrapper">
+          <div class="status-chip {{stat.stat.name}}" *ngFor="let stat of this.pokemon.stats">
+              <div class="param chip-color {{stat.stat.name}}">
+                  {{stat.stat.name |titlecase}}
+              </div>
+              <div class="value">
+                  {{stat.base_stat}}
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <div class="card--details">
+        <span>
+          <strong>Altura:</strong> {{this.height}}m
+        </span>
+        <span>
+          <strong>Peso:</strong> {{this.weight}}kg
+        </span>
+      </div>
+    
+
+</div>

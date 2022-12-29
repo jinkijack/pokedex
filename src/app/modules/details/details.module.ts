@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { DetailsComponent } from './details/details.component';
+import { DetailsRoutingModule } from './details-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DetailsComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    DetailsRoutingModule
   ]
 })
 export class DetailsModule { }

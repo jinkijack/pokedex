@@ -11,12 +11,12 @@
     </div>
   </div>
 
-
+  <a [routerLink]="['/details-pokemon', this.pokemon.id]">
   <img class="card--image"
   [src]="this.getArt()"
     [alt]="this.pokemon.name" />
+  </a>
   <h1 class="card--name">{{this.name | titlecase}}</h1>
-
   <div class="card--details">
     <span>
       <strong>Altura:</strong> {{this.height}}m
