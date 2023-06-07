@@ -48,6 +48,11 @@
   :root {
       font-size: calc(16px + (24 - 16)*(100vw - 320px)/(1920 - 320));
   }
+  .search-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   body, button, input {
       font: 1em Hind, sans-serif;
       line-height: 1.5em;
@@ -198,32 +203,44 @@
   }
   
     .favoritos {
+      display: flex;
+      flex-direction: column;
       h2 {
         margin: 1rem auto 1rem;
         text-align: center;
         color: white;
       }
       .favoritos-wrapper {
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
-        display: grid;
+        display: flex;
         grid-template-columns: repeat(5, minmax(300px, 1fr));
         grid-gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
       }
     }
     
     .history {
+      display: flex;
+      flex-direction: column;
       h2 {
         margin: 1rem auto 1rem;
         text-align: center;
         color: white;
       }
       .history-wrapper {
-        width: 60%;
+        width: 90%;
         margin: 0 auto;
-        display: grid;
+        display: flex;
         grid-template-columns: repeat(3, minmax(300px, 1fr));
         grid-gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
       }
     }
     
