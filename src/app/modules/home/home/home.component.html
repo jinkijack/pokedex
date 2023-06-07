@@ -20,7 +20,7 @@
     <section class="favoritos">
       <h2>Favoritos</h2>
       <div class="favoritos-wrapper">
-        <app-history-card 
+        <app-history-card class="card"
         *ngFor="let poke of this.fav" 
         [pokemon]="poke" 
         [isFavorite]="true"
@@ -41,7 +41,7 @@
       <h2>Histórico de busca</h2>
   
       <div class="history-wrapper">
-        <app-history-card *ngFor="let poke of this.history" [pokemon]="poke"
+        <app-history-card class="card" *ngFor="let poke of this.history" [pokemon]="poke"
         
         (viewPokemon)="viewPokemon($event)"
         ></app-history-card>
@@ -51,7 +51,7 @@
     <section class="options-section">
       <div class="options">
         <div>
-          <button (click)="cleanHistory()">Limpar Histórico</button>
+          <button class="btn-opcao" (click)="cleanHistory()">Limpar Histórico</button>
         </div>
       </div>
     </section>

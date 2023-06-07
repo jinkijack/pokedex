@@ -278,5 +278,14 @@
         }
       }
     }
-  
+.btn-opcao{
+  &:hover{
+    cursor: pointer;
+  }
+}
+.card{
+  &:hover{
+    cursor: pointer;
+  }
+}
   

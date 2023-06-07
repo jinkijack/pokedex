@@ -141,6 +141,10 @@ removeFromFavorites(poke: Pokemon):void {
 
 viewPokemon(poke: Pokemon):void {
   this.pokemon = poke;
+  this.scrollToTop();
+}
+scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 cleanHistory():void {
