@@ -73,5 +73,5 @@ Este projeto está licenciado é open source e pode ser modificado e utilizado p
 
 ## Contato
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir um issue ou entrar em contato pelo formulário:
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para utilizar a aba de discussão, abrir um issue ou entrar em contato pelo formulário:
 https://tiagocarvalho.me/contact.html
